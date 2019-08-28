@@ -4,35 +4,22 @@ const Devedor = mongoose.model("Devedor");
 
 module.exports = {
   async index(req, res) {
-    const devedores = await Devedor.find().sort({ nome: 1 });
-    return res.json(devedores);
+    const nomes = await Devedor.distinct("nome");
+    const devedores = await Devedor.find();
+    return res.json(nomes);
   },
 
   async show(req, res) {
-    const devedor = await Devedor.findById(req.params.id);
-
-    return res.json(devedor);
+    const devedor = await Devedor.distinct("nome");
+    const teste = await Devedor.find({ nome: { $eq: req.params.nome } });
+    //return res.json(devedor);
+    return res.json(teste);
   },
-  //id Rodrigo Alves#6821
-  //executa insomina ai
   // express-validation
   async store(req, res) {
-    // console.log({ aki: req.body.devedor });
     const { devedor } = req.body;
     const devedor2 = await Devedor.create(devedor);
-    // const { nome,Vdiv,parc } = req.params;
-    // const { data } = req.params;
-    // const data2 = moment(data);
-    // const devedor2 = await Devedor.create({nome,Vdiv,parc});
     return res.json(devedor2.tese);
-  },
-
-  async update(req, res) {
-    const devedor = await Devedor.findByIdAndUpdate(req.params.id, req.body, {
-      new: true
-    });
-
-    return res.json(devedor);
   },
 
   async destroy(req, res) {
