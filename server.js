@@ -11,6 +11,7 @@ mongoose.connect(process.env.MONGO_URL, {
 });
 
 require("./src/models/Devedores");
+require("./src/models/user");
 
 app.use("/api", require("./src/routes"));
 

@@ -1,5 +1,15 @@
 const express = require("express");
+
+const authMiddleware = require("./middlewares/auth");
+
 const routes = express.Router();
+
+const UserController = require("./controllers/authController");
+
+routes.post("/register", UserController.register);
+routes.post("/authenticate", UserController.authenticate);
+
+routes.use(authMiddleware);
 
 const DevedorController = require("./controllers/DevedorController");
 
