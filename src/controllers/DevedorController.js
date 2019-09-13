@@ -10,7 +10,7 @@ module.exports = {
   },
 
   async show(req, res) {
-    const devedor = await Devedor.distinct("nome");
+    //const devedor = await Devedor.distinct("nome");
     const teste = await Devedor.find({ nome: { $eq: req.params.nome } });
     //return res.json(devedor);
     return res.json(teste);

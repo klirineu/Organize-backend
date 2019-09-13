@@ -15,6 +15,7 @@ const DevedorController = require("./controllers/DevedorController");
 
 routes.get("/devedores", DevedorController.index);
 routes.get("/devedores/order/:nome", DevedorController.show);
+routes.get("devedores/order/:nome/:id");
 routes.post("/devedores", DevedorController.store);
 routes.delete("/devedores/:id", DevedorController.destroy);
 
