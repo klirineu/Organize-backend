@@ -3,12 +3,15 @@ const cors = require("cors");
 const mongoose = require("mongoose");
 
 const app = express();
+
 app.use(express.json());
-app.use(cors());
 
 mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true
+  useNewUrlParser: true,
+  useUnifiedTopology: true
 });
+
+app.use(cors());
 
 require("./src/models/Devedores");
 require("./src/models/user");
