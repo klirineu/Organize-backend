@@ -8,9 +8,9 @@ const DevedorSchema = new mongoose.Schema({
     type: Date,
     default: Date.now
   },
-  countermes: {
+  counter: {
     type: Number,
-    default: 1
+    default: 0
   }
 });
 

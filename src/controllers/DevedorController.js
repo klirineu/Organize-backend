@@ -38,5 +38,16 @@ module.exports = {
     await Devedor.findByIdAndDelete(req.params.id);
 
     return res.send();
+  },
+  async counters(req, res) {
+    const devedor = await Devedor.findById(req.params.id);
+    const { counter, Vdiv } = devedor;
+    devedor.counter += 1;
+
+    await devedor.save();
+
+    //req.io.emit("counter", devedor);
+
+    return res.json({ devedor });
   }
 };
