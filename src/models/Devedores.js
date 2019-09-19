@@ -7,6 +7,10 @@ const DevedorSchema = new mongoose.Schema({
   createdAt: {
     type: Date,
     default: Date.now
+  },
+  countermes: {
+    type: Number,
+    default: 1
   }
 });
 

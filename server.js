@@ -6,9 +6,13 @@ const app = express();
 app.use(express.json());
 app.use(cors());
 
-mongoose.connect(process.env.MONGO_URL, {
-  useNewUrlParser: true
-});
+mongoose.connect(
+  //process.env.MONGO_URL
+  "mongodb+srv://Organize:klirineu123@cluster0-jk5up.mongodb.net/test?retryWrites=true&w=majority",
+  {
+    useNewUrlParser: true
+  }
+);
 
 require("./src/models/Devedores");
 require("./src/models/user");
